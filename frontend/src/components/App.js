@@ -1,10 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { Routes, Route } from 'react-router-dom';
+import Navbar from "./Navbar";
+import Home from "./Home";
 
 function App() {
     return(
-        <h1>
-            hello there
-        </h1>
+        <div>
+            <Navbar />
+            <Routes>
+                <Route path='/' element={Home}/>
+            </Routes>
+        </div>
     )
 }
 
