@@ -10,15 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_11_29_185730) do
+ActiveRecord::Schema.define(version: 2022_11_30_155946) do
 
   create_table "directors", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "genres", force: :cascade do |t|
     t.string "name"
   end
 
   create_table "movies", force: :cascade do |t|
     t.string "name"
     t.integer "runtime"
+    t.integer "director_id"
+    t.integer "genre_id"
   end
 
 end
