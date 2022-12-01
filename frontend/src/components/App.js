@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./Login";
+import Home from "./Home";
 
 function App() {
     return (
@@ -12,11 +13,17 @@ function App() {
             <li>
               <Link to="/">Login</Link>
             </li>
+            <li>
+              <Link to="/Home">Home</Link>
+            </li>
           </ul>
         </nav>
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Login />
+          </Route>
+          <Route path="/Home">
+            <Home />
           </Route>
         </Switch>
       </div>

@@ -1,9 +1,12 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-function Login() {   
+function Login() {
+    let history = useHistory();
     return (
         <div>
             Login
+            <button onClick={() => {history.push('/home')}}>Login</button>
         </div>
     )
 }
