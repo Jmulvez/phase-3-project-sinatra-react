@@ -5,10 +5,10 @@ function Login() {
     let history = useHistory();
     return (
         <div>
-            Login
+            Login to continue
             <button onClick={() => {history.push('/home')}}>Login</button>
         </div>
-    )
+    );
 }
 
 export default Login;
