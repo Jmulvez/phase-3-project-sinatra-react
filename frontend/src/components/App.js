@@ -4,6 +4,11 @@ import Login from "./Login";
 import Home from "./Home";
 
 function App() {
+  useEffect(() => {
+    fetch("http://localhost:9292/movies")
+    .then(res => res.json())
+    .then(data => (data))
+}, []);
     return (
       <div>
         <Router>
