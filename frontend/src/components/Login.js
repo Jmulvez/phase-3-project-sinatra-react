@@ -6,6 +6,16 @@ function Login() {
     return (
         <div>
             Login to continue
+            <form>
+                <input
+                label="username"
+                placeholder="Username"
+                />
+                <input
+                label="password"
+                placeholder="Password"
+                />
+            </form>
             <button onClick={() => {history.push('/home')}}>Login</button>
         </div>
     );
