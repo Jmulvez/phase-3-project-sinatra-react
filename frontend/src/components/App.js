@@ -4,7 +4,7 @@ import Login from "./Login";
 import Home from "./Home";
 
 function App() {
-  const [movies, setMovies] = useState();
+  const [movies, setMovies] = useState([]);
   useEffect(() => {
     fetch("http://localhost:9292/movies")
     .then(res => res.json())
