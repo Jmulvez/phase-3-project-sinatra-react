@@ -7,6 +7,8 @@ class ApplicationController < Sinatra::Base
     end
     
     post '/movies' do
+        binding.pry
+        #find director using find_by director_name
         movies = Movie.create(
             name: params[:name],
             runtime: params[:runtime],
@@ -16,4 +18,22 @@ class ApplicationController < Sinatra::Base
         movies.to_json
         #director = Director.find_or_create()
     end
+
+    patch '/movies/:id' do 
+        movies = Movie.find(params[:id])
+        movies.update(
+            name: params[:name],
+            runtime: params[:runtime],
+            director_id: params[:director_id],
+            genre_id: params[:genre_id]
+        )
+        messages.to_json
+      end
+
+      delete '/movies/:id' do 
+        movies = Movie.find(params[:id])
+        movies.destroy
+        movies.to_json
+      end
+
 end

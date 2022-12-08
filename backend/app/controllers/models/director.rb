@@ -1,4 +1,4 @@
-class Movie < ActiveRecord::Base
-    belongs_to :director
-    belongs_to :genre
+class Director < ActiveRecord::Base
+    has_many :movies
+    has_many :genres, through: :movies 
 end
