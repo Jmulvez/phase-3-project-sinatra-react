@@ -7,7 +7,6 @@ class ApplicationController < Sinatra::Base
     end
     
     post '/movies' do
-        binding.pry
         #find director using find_by director_name
         movies = Movie.create(
             name: params[:name],
