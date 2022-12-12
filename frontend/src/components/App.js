@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./Login";
-import Home from "./Home";
+import Movie from "./Movie";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -10,6 +10,10 @@ function App() {
     .then(res => res.json())
     .then(data => setMovies(data))
 }, []);
+
+function handleNewMovie(newMovie) {
+  setMovies([...movies, newMovie])
+}
     return (
       <div>
         <Router>
@@ -29,7 +33,8 @@ function App() {
             <Login />
           </Route>
           <Route path="/Home">
-            <Home movies={movies}/>
+            <NewMovie onAddItem={handleNewMovie} />
+            <Movie movies={movies}/>
           </Route>
         </Switch>
       </div>

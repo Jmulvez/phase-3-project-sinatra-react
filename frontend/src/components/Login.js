@@ -16,7 +16,7 @@ function Login() {
                 placeholder="Password"
                 />
             </form>
-            <button onClick={() => {history.push('/home')}}>Login</button>
+            <button onClick={() => {history.push('/movie')}}>Login</button>
         </div>
     );
 }
