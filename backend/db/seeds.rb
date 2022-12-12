@@ -1,6 +1,6 @@
 puts "🌱 Seeding messages..."
 
-red = Movie.create(name: 'Red', runtime: 123)
+red = Movie.create(name: 'Red', runtime: 123, director_name: 'Oda', genre_name: 'Anime')
 
 oda = Director.create(name: 'oda')
 

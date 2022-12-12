@@ -11,8 +11,8 @@ class ApplicationController < Sinatra::Base
         movies = Movie.create(
             name: params[:name],
             runtime: params[:runtime],
-            director_id: params[:director_id],
-            genre_id: params[:genre_id]
+            director_name: params[:director_name],
+            genre_name: params[:genre_name]
         )
         movies.to_json
         #director = Director.find_or_create()
@@ -23,8 +23,8 @@ class ApplicationController < Sinatra::Base
         movies.update(
             name: params[:name],
             runtime: params[:runtime],
-            director_id: params[:director_id],
-            genre_id: params[:genre_id]
+            director_name: params[:director_name],
+            genre_name: params[:genre_name]
         )
         messages.to_json
       end

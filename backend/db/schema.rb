@@ -23,6 +23,9 @@ ActiveRecord::Schema.define(version: 2022_11_30_155946) do
   create_table "movies", force: :cascade do |t|
     t.string "name"
     t.integer "runtime"
+    t.string "director_name"
+    t.string "genre_name"
+    t.string "image_url"
     t.integer "director_id"
     t.integer "genre_id"
   end
