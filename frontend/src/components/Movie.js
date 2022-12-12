@@ -15,9 +15,9 @@ function Movie({ movies }) {
     return (
         <div>
             Watchlist
+            {getMovies}
         </div>
-        {getMovies}
-    );
+    )
 }
 
 export default Movie;

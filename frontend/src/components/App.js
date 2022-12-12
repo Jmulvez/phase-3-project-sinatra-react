@@ -24,7 +24,7 @@ function handleNewMovie(newMovie) {
               <Link to="/">Login</Link>
             </li>
             <li>
-              <Link to="/Home">Home</Link>
+              <Link to="/Movie">Watchlist</Link>
             </li>
           </ul>
         </nav>
@@ -32,7 +32,7 @@ function handleNewMovie(newMovie) {
           <Route exact path="/">
             <Login />
           </Route>
-          <Route path="/Home">
+          <Route path="/Movie Q3">
             <NewMovie onAddItem={handleNewMovie} />
             <Movie movies={movies}/>
           </Route>
