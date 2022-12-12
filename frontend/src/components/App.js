@@ -2,18 +2,19 @@ import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./Login";
 import Movie from "./Movie";
+import NewMovie from "./NewMovie";
 
 function App() {
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     fetch("http://localhost:9292/movies")
-    .then(res => res.json())
+    .then((res) => res.json())
     .then(data => setMovies(data))
 }, []);
 
-function handleNewMovie(newMovie) {
-  setMovies([...movies, newMovie])
-}
+//function handleNewMovie(newMovie) {
+  //setMovies([...movies, newMovie])
+//}
     return (
       <div>
         <Router>
@@ -24,7 +25,7 @@ function handleNewMovie(newMovie) {
               <Link to="/">Login</Link>
             </li>
             <li>
-              <Link to="/Movie">Watchlist</Link>
+              <Link to="/Movies">Watchlist</Link>
             </li>
           </ul>
         </nav>
@@ -32,8 +33,8 @@ function handleNewMovie(newMovie) {
           <Route exact path="/">
             <Login />
           </Route>
-          <Route path="/Movie Q3">
-            <NewMovie onAddItem={handleNewMovie} />
+          <Route path="/Movies">
+
             <Movie movies={movies}/>
           </Route>
         </Switch>

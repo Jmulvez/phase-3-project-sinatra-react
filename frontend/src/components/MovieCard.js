@@ -3,7 +3,7 @@ import React, { useState } from "react";
 function MovieCard({ name, runtime, director_name, genre_name, image_url }) {
     const [watched, setWatched] = useState(false);
     const pictureStyle = {
-        width:"450px",
+        width:"200px",
         height:"250px"
     };
     return (
@@ -12,9 +12,9 @@ function MovieCard({ name, runtime, director_name, genre_name, image_url }) {
             <img src={image_url} alt="" style={pictureStyle} />
             <p>{director_name}</p>
             <p>{genre_name}</p>
-            <p>{runtime}</p>
+            <p>Runtime: {runtime} minutes</p>
             <button onClick={() => setWatched((prevState) => !prevState)}>
-                {watched ? "❎" : "✅"}
+                {watched ? "✅" : "❎"}
             </button>
         </div>
     )
