@@ -12,9 +12,9 @@ function App() {
     .then(data => setMovies(data))
 }, []);
 
-//function handleNewMovie(newMovie) {
-  //setMovies([...movies, newMovie])
-//}
+function handleNewMovie(newMovie) {
+  setMovies([...movies, newMovie])
+}
     return (
       <div>
         <Router>
@@ -34,7 +34,7 @@ function App() {
             <Login />
           </Route>
           <Route path="/Movies">
-
+            <NewMovie onAddItem={handleNewMovie} />
             <Movie movies={movies}/>
           </Route>
         </Switch>
