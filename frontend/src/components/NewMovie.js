@@ -3,9 +3,9 @@ import React, { useState } from "react";
 function NewMovie({ onAddItem }) {
     const [name, setName] = useState("");
     const [runtime, setRuntime] = useState("");
-    const [directorName, setDirectorName] = useState("");
-    const [genreName, setGenreName] = useState("");
-    const [imageUrl, setImageUrl] = useState("");
+    const [directorName, setDirector] = useState("");
+    const [genreName, setGenre] = useState("");
+    const [imageUrl, setImage] = useState("");
     
     function handleNewName(e) {
         setName(e.target.value);
@@ -16,15 +16,15 @@ function NewMovie({ onAddItem }) {
     }
 
     function handleNewDirector(e) {
-        setDirectorName(e.target.value);
+        setDirector(e.target.value);
     }
 
     function handleNewGenre(e) {
-        setGenreName(e.target.value);
+        setGenre(e.target.value);
     }
 
     function handleNewImage(e) {
-        setImageUrl(e.target.value);
+        setImage(e.target.value);
     }
 
     function handleSubmit(e) {
@@ -50,7 +50,40 @@ function NewMovie({ onAddItem }) {
 
     return (
         <form className="NewMovie" onSubmit={handleSubmit}>
-            
+            Add Movie to Watchlist:
+            <ul>
+            <input 
+            label="name"
+            placeholder="Name"
+            onChange={handleNewName}
+            value={name}
+            />
+            <input 
+            label="runtime"
+            placeholder="Movie Length"
+            onChange={handleNewRuntime}
+            value={runtime}
+            />
+            <input
+            label="director"
+            placeholder="Director"
+            onChange={handleNewDirector}
+            value={directorName} 
+            />
+            <input
+            label="genre"
+            placeholder="Genre"
+            onChange={handleNewGenre}
+            value={genreName}
+            />
+            <input
+            label="image"
+            placeholder="Image URL"
+            onChange={handleNewImage}
+            value={imageUrl} 
+            />
+            </ul>
+            <button>Submit</button>
         </form>
     )
 }

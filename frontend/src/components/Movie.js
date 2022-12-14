@@ -6,9 +6,9 @@ function Movie({ movies }) {
         return <div>
                     <MovieCard name={movie.name}
                                runtime={movie.runtime}
-                               director_name={movie.director_name}
-                               genre_name={movie.genre_name}
-                               image_url={movie.image_url}
+                               directorName={movie.directorName}
+                               genreName={movie.genreName}
+                               imageUrl={movie.imageUrl}
                     />
                 </div>
     })
