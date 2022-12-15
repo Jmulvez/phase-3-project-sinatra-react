@@ -15,6 +15,22 @@ function App() {
 function handleNewMovie(newMovie) {
   setMovies([...movies, newMovie])
 }
+
+function handleDeleteMovie(id) {
+  const updatedMovies = movies.filter((movie) => movie.id !== id);
+  setMovies(updatedMovies);
+}
+
+function handleEditedMovies(updatedMovieObj) {
+  const updatedMovies = movies.map((movie) => {
+    if (movie.id === updatedMovieObj.id) {
+      return updatedMovieObj;
+    } else {
+      return movie;
+    }
+  });
+  setMovies(updatedMovies);
+}
     return (
       <div>
         <Router>
