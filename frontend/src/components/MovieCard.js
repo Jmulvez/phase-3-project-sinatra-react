@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import EditMovie from "./EditMovie";
 
 function MovieCard({ id, name, runtime, directorName, genreName, imageUrl, onMovieDelete, onMovieEdit }) {
     const [watched, setWatched] = useState(false);
@@ -21,7 +22,19 @@ function MovieCard({ id, name, runtime, directorName, genreName, imageUrl, onMov
     }
     
     return (
-        <div>
+        <li>
+        {editing ? (
+            <EditMovie 
+            id={id}
+            name={name}
+            runtime={runtime}
+            directorName={directorName}
+            genreName={genreName}
+            imageUrl={imageUrl}
+            onMovieEdit={handleUpdateMovie}
+            />
+        ) : (
+            <div>
             <h1>{name}</h1>
             <img src={imageUrl} alt="" style={pictureStyle} />
             <p>{directorName}</p>
@@ -30,13 +43,20 @@ function MovieCard({ id, name, runtime, directorName, genreName, imageUrl, onMov
             <button onClick={() => setWatched((prevState) => !prevState)}>
                 {watched ? "✅" : "❎"}
             </button>
+            <button onClick={() => setEditing((editing) => !editing)}>
+            <span role="img" aria-label="edit">
+            ✏️
+            </span>
+            </button>
             <button onClick={handleDeleteClick}>
             <span role="img" aria-label="delete">
               🗑
             </span>
           </button>
         </div>
-    )
+        )}
+        </li>
+    );
 }
 
 export default MovieCard;
