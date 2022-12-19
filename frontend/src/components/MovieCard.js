@@ -1,11 +1,25 @@
 import React, { useState } from "react";
 
-function MovieCard({ name, runtime, directorName, genreName, imageUrl }) {
+function MovieCard({ id, name, runtime, directorName, genreName, imageUrl, onMovieDelete, onMovieEdit }) {
     const [watched, setWatched] = useState(false);
+    const [editing, setEditing] = useState(false);
     const pictureStyle = {
         width:"200px",
         height:"250px"
     };
+
+    function handleDeleteClick() {
+        fetch(`http://localhost:9292/movies/${id}`, {
+            method: "DELETE",
+        });
+        onMovieDelete(id);
+    }
+
+    function handleUpdateMovie(updatedMovie) {
+        setEditing(false);
+        onMovieEdit(updatedMovie);
+    }
+    
     return (
         <div>
             <h1>{name}</h1>
@@ -16,6 +30,11 @@ function MovieCard({ name, runtime, directorName, genreName, imageUrl }) {
             <button onClick={() => setWatched((prevState) => !prevState)}>
                 {watched ? "✅" : "❎"}
             </button>
+            <button onClick={handleDeleteClick}>
+            <span role="img" aria-label="delete">
+              🗑
+            </span>
+          </button>
         </div>
     )
 }

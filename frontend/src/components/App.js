@@ -51,7 +51,11 @@ function handleEditedMovies(updatedMovieObj) {
           </Route>
           <Route path="/Movies">
             <NewMovie onAddItem={handleNewMovie} />
-            <Movie movies={movies}/>
+            <Movie 
+              movies={movies}
+              onMovieDelete={handleDeleteMovie}
+              onMovieEdit={handleEditedMovies}
+              />
           </Route>
         </Switch>
       </div>
