@@ -3,7 +3,7 @@ import EditMovie from "./EditMovie";
 
 function MovieCard({ id, name, runtime, directorName, genreName, imageUrl, onMovieDelete, onMovieEdit }) {
     const [watched, setWatched] = useState(false);
-    const [editing, setEditing] = useState(false);
+    const [isEditing, setEditing] = useState(false);
     const pictureStyle = {
         width:"200px",
         height:"250px"
@@ -23,7 +23,7 @@ function MovieCard({ id, name, runtime, directorName, genreName, imageUrl, onMov
     
     return (
         <li>
-        {editing ? (
+        {isEditing ? (
             <EditMovie 
             id={id}
             name={name}
@@ -43,15 +43,15 @@ function MovieCard({ id, name, runtime, directorName, genreName, imageUrl, onMov
             <button onClick={() => setWatched((prevState) => !prevState)}>
                 {watched ? "✅" : "❎"}
             </button>
-            <button onClick={() => setEditing((editing) => !editing)}>
-            <span role="img" aria-label="edit">
-            ✏️
-            </span>
+            <button onClick={() => setEditing((isEditing) => !isEditing)}>
+                <span role="img" aria-label="edit">
+                    ✏️
+                </span>
             </button>
             <button onClick={handleDeleteClick}>
-            <span role="img" aria-label="delete">
-              🗑
-            </span>
+                <span role="img" aria-label="delete">
+                    🗑
+                </span>
           </button>
         </div>
         )}

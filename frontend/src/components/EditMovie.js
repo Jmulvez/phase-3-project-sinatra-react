@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { useHistory } from 'react-router-dom';
 
 function EditMovie({ id, name, runtime, directorName, genreName, imageUrl, onMovieEdit }) {
-    let history = useHistory();
     const [movieName, setMovieName] = useState(name);
     const [movieRuntime, setMovieRuntime] = useState(runtime);
     const [movieDirector, setMovieDirector] = useState(directorName);
@@ -21,7 +19,7 @@ function EditMovie({ id, name, runtime, directorName, genreName, imageUrl, onMov
                 runtime: movieRuntime,
                 directorName: movieDirector,
                 genreName: movieGenre,
-                imageUrl: movieImage, 
+                imageUrl: movieImage
               }),
         })
         .then((res) => res.json())
@@ -64,12 +62,14 @@ function EditMovie({ id, name, runtime, directorName, genreName, imageUrl, onMov
             value={movieImage}
             onChange={(e) => setMovieImage(e.target.value)} 
             />
+            <button>
             <input 
             type="submit" 
             value="Submit" 
-            onClick={() => {history.push('/movies')}}/>
+            />
+            </button>
         </form>
-    )
+    );
 }
 
 export default EditMovie;

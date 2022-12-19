@@ -46,6 +46,11 @@ function NewMovie({ onAddItem }) {
         })
         .then(res => res.json())
         .then(newMovie => onAddItem(newMovie))
+        setName("")
+        setRuntime("")
+        setDirector("")
+        setGenre("")
+        setImage("")
     }
 
     return (
