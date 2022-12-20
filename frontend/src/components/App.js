@@ -37,12 +37,16 @@ function handleEditedMovies(updatedMovieObj) {
       <div>
         <nav>
           <ul>
-            <li>
-              <Link to="/">Login</Link>
-            </li>
-            <li>
-              <Link to="/Movies">Watchlist</Link>
-            </li>
+            <button>
+              <li>
+                <Link to="/">Login</Link>
+              </li>
+            </button>
+            <button>
+              <li>
+                <Link to="/Movies">Watchlist</Link>
+              </li>
+            </button>
           </ul>
         </nav>
         <Switch>

@@ -37,7 +37,7 @@ function MovieCard({ id, name, runtime, directorName, genreName, imageUrl, onMov
             <div>
             <h1>{name}</h1>
             <img src={imageUrl} alt="" style={pictureStyle} />
-            <p>{directorName}</p>
+            <p>Directed by {directorName}</p>
             <p>{genreName}</p>
             <p>Runtime: {runtime} minutes</p>
             <button onClick={() => setWatched((prevState) => !prevState)}>

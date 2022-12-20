@@ -2,8 +2,14 @@ import React from 'react';
 import MovieCard from './MovieCard'
 
 function Movie({ movies, onMovieDelete, onMovieEdit }) {
+
+    const movieCardStyle = {
+        backgroundColor: "grey",
+        padding: 35,
+        borderRadius: '5%'
+    }
     const getMovies = movies.map((movie) => {
-        return <div>
+        return <div class="card" style={movieCardStyle}>
                     <MovieCard id={movie.id}
                                name={movie.name}
                                runtime={movie.runtime}
