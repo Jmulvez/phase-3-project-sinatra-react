@@ -19,7 +19,7 @@ function Login() {
             </form>
             <button onClick={() => {history.push('/movies')}}>Login</button>
             <div>
-                <img src="https://images.all-free-download.com/images/graphiclarge/movie_logo_design_text_reel_filmstrip_icons_decoration_6829232.jpg"/>
+                <img src="https://images.all-free-download.com/images/graphiclarge/movie_logo_design_text_reel_filmstrip_icons_decoration_6829232.jpg" alt=""/>
             </div>
         </div>
     );
