@@ -5,7 +5,7 @@ function Movie({ movies, onMovieDelete, onMovieEdit }) {
 
     const movieCardStyle = {
         backgroundColor: "grey",
-        padding: 55,
+        padding: 80,
         borderRadius: '5%',
         textDecoration: 'none',
         listStyle: 'none'

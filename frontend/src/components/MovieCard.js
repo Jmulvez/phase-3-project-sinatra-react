@@ -5,8 +5,8 @@ function MovieCard({ id, name, runtime, directorName, genreName, imageUrl, onMov
     const [watched, setWatched] = useState(false);
     const [isEditing, setEditing] = useState(false);
     const pictureStyle = {
-        width:"200px",
-        height:"250px"
+        width:"300px",
+        height:"400px"
     };
 
     function handleDeleteClick() {
