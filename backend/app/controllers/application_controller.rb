@@ -26,7 +26,7 @@ class ApplicationController < Sinatra::Base
             genreName: params[:genreName],
             imageUrl: params[:imageUrl]
         )
-        messages.to_json
+        movies.to_json
       end
 
       delete '/movies/:id' do 

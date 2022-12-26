@@ -6,6 +6,18 @@ import NewMovie from "./NewMovie";
 
 function App() {
   const [movies, setMovies] = useState([]);
+
+  const buttonStyle = {
+    color: "silver",
+    textDecoration: 'none',
+    listStyle: 'none'
+  };
+
+  const textStyle = {
+    color: "black",
+    textDecoration: 'none'
+  };
+
   useEffect(() => {
     fetch("http://localhost:9292/movies")
     .then((res) => res.json())
@@ -38,13 +50,13 @@ function handleEditedMovies(updatedMovieObj) {
         <nav>
           <ul>
             <button>
-              <li>
-                <Link to="/">Login</Link>
+              <li style={buttonStyle}>
+                <Link to="/" style={textStyle}>Login</Link>
               </li>
             </button>
             <button>
-              <li>
-                <Link to="/Movies">Watchlist</Link>
+              <li style={buttonStyle}>
+                <Link to="/Movies" style={textStyle}>Watchlist</Link>
               </li>
             </button>
           </ul>

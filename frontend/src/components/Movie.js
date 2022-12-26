@@ -5,8 +5,10 @@ function Movie({ movies, onMovieDelete, onMovieEdit }) {
 
     const movieCardStyle = {
         backgroundColor: "grey",
-        padding: 35,
-        borderRadius: '5%'
+        padding: 55,
+        borderRadius: '5%',
+        textDecoration: 'none',
+        listStyle: 'none'
     }
     const getMovies = movies.map((movie) => {
         return <div class="card" style={movieCardStyle}>
