@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 
-function EditMovie({ id, name, runtime, directorName, genreName, imageUrl, onMovieEdit }) {
+function EditMovie({ id, name, runtime, genre, imageUrl, onMovieEdit }) {
     const [movieName, setMovieName] = useState(name);
     const [movieRuntime, setMovieRuntime] = useState(runtime);
-    const [movieDirector, setMovieDirector] = useState(directorName);
-    const [movieGenre, setMovieGenre] = useState(genreName);
+    const [movieGenre, setMovieGenre] = useState(genre);
     const [movieImage, setMovieImage] = useState(imageUrl);
 
     function handleEditSubmit(e) {
@@ -17,8 +16,7 @@ function EditMovie({ id, name, runtime, directorName, genreName, imageUrl, onMov
               body: JSON.stringify({
                 name: movieName,
                 runtime: movieRuntime,
-                directorName: movieDirector,
-                genreName: movieGenre,
+                genre: movieGenre,
                 imageUrl: movieImage
               }),
         })
@@ -40,13 +38,6 @@ function EditMovie({ id, name, runtime, directorName, genreName, imageUrl, onMov
             autoComplete="off"
             value={movieRuntime}
             onChange={(e) => setMovieRuntime(e.target.value)}
-            />
-            <input
-            type="text"
-            name="director"
-            autoComplete="off"
-            value={movieDirector}
-            onChange={(e) => setMovieDirector(e.target.value)} 
             />
             <input
             type="text"

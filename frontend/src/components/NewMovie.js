@@ -3,8 +3,7 @@ import React, { useState } from "react";
 function NewMovie({ onAddItem }) {
     const [name, setName] = useState("");
     const [runtime, setRuntime] = useState("");
-    const [directorName, setDirector] = useState("");
-    const [genreName, setGenre] = useState("");
+    const [genre, setGenre] = useState("");
     const [imageUrl, setImage] = useState("");
     
     function handleNewName(e) {
@@ -13,10 +12,6 @@ function NewMovie({ onAddItem }) {
 
     function handleNewRuntime(e) {
         setRuntime(e.target.value);
-    }
-
-    function handleNewDirector(e) {
-        setDirector(e.target.value);
     }
 
     function handleNewGenre(e) {
@@ -32,8 +27,7 @@ function NewMovie({ onAddItem }) {
         const movieData = {
             name: name,
             runtime: runtime,
-            directorName: directorName,
-            genreName: genreName,
+            genre: genre,
             imageUrl: imageUrl
         };
 
@@ -48,7 +42,6 @@ function NewMovie({ onAddItem }) {
         .then(newMovie => onAddItem(newMovie))
         setName("")
         setRuntime("")
-        setDirector("")
         setGenre("")
         setImage("")
     }
@@ -70,16 +63,10 @@ function NewMovie({ onAddItem }) {
             value={runtime}
             />
             <input
-            label="director"
-            placeholder="Director"
-            onChange={handleNewDirector}
-            value={directorName} 
-            />
-            <input
             label="genre"
             placeholder="Genre"
             onChange={handleNewGenre}
-            value={genreName}
+            value={genre}
             />
             <input
             label="image"

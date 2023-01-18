@@ -15,8 +15,7 @@ function Movie({ movies, onMovieDelete, onMovieEdit }) {
                     <MovieCard id={movie.id}
                                name={movie.name}
                                runtime={movie.runtime}
-                               directorName={movie.directorName}
-                               genreName={movie.genreName}
+                               genre={movie.genre}
                                imageUrl={movie.imageUrl}
                                onMovieDelete={onMovieDelete}
                                onMovieEdit={onMovieEdit}
