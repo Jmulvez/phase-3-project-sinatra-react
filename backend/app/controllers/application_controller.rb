@@ -35,14 +35,12 @@ class ApplicationController < Sinatra::Base
 
     get '/directors' do
         directors = Director.all.order(:name)
-        directors.to_json(include: :movies)
+        directors.to_json
     end
 
-    get 'directors/:id' do
-        director = Director.find_by(params[:id])
-        director.to_json(only: [:id, :name], include: {
-            movies: { only: [:name, :runtime, :genre, :imageUrl]}
-        })
+    get '/directors/:id' do
+        director = Director.find(params[:id])
+        director.to_json(include: :movies)
     end
 
     post '/directors' do
@@ -60,10 +58,10 @@ class ApplicationController < Sinatra::Base
         directors.to_json
     end
 
-    delete 'directors/:id' do
-        director = Director.find_by(params[:id])
-        director.destroy
-        director.to_json
+    delete '/directors/:id' do
+        directors = Director.find(params[:id])
+        directors.destroy
+        directors.to_json
     end
 
 end

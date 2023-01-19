@@ -3,9 +3,11 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./Login";
 import Movie from "./Movie";
 import NewMovie from "./NewMovie";
+import DirectorPage from "./DirectorPage";
 
 function App() {
   const [movies, setMovies] = useState([]);
+  const [directors, setDirectors] = useState([]);
 
   const buttonStyle = {
     color: "silver",
@@ -22,7 +24,13 @@ function App() {
     fetch("http://localhost:9292/movies")
     .then((res) => res.json())
     .then(data => setMovies(data))
-}, []);
+  }, []);
+
+  useEffect(() => {
+    fetch("http://localhost:9292/directors")
+    .then((res) => res.json())
+    .then(data => setDirectors(data))
+  }, []);
 
 function handleNewMovie(newMovie) {
   setMovies([...movies, newMovie])
@@ -59,11 +67,19 @@ function handleEditedMovies(updatedMovieObj) {
                 <Link to="/Movies" style={textStyle}>Watchlist</Link>
               </li>
             </button>
+            <button>
+              <li style={buttonStyle}>
+                <Link to="/DirectorPage" style={textStyle}>Directors</Link>
+              </li>
+            </button>
           </ul>
         </nav>
         <Switch>
           <Route exact path="/">
             <Login />
+          </Route>
+          <Route exact path="/DirectorPage">
+            <DirectorPage directors={directors}/>
           </Route>
           <Route path="/Movies">
             <NewMovie onAddItem={handleNewMovie} />
