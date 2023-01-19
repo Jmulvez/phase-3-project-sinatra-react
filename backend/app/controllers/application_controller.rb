@@ -50,6 +50,17 @@ class ApplicationController < Sinatra::Base
         director.to_json
     end
 
+    post '/directors/:id/movies' do
+    movie = Movie.create(
+            name: params[:name],
+            runtime: params[:runtime],
+            genre: params[:genre],
+            imageUrl: params[:imageUrl],
+            director_id: params[:id]
+    )
+    movie.to_json
+    end
+
     patch '/directors/:id' do
         directors = Director.find(params[:id])
         directors.update(

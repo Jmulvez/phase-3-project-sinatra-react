@@ -1,4 +1,5 @@
 import React from 'react';
+import DirectorCard from './DirectorCard';
 
 function DirectorsPage({ directors }) {
 
