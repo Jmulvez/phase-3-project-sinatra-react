@@ -35,7 +35,7 @@ class ApplicationController < Sinatra::Base
 
     get '/directors' do
         directors = Director.all.order(:name)
-        directors.to_json
+        directors.to_json(include: :movies)
     end
 
     get '/directors/:id' do

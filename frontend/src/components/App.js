@@ -79,7 +79,11 @@ function handleEditedMovies(updatedMovieObj) {
             <Login />
           </Route>
           <Route exact path="/DirectorPage">
-            <DirectorPage directors={directors}/>
+            <DirectorPage directors={directors} 
+                          onMovieDelete={handleDeleteMovie}
+                          onMovieEdit={handleEditedMovies}
+                          onAddItem={handleNewMovie}
+                          />
           </Route>
           <Route path="/Movies">
             <NewMovie onAddItem={handleNewMovie} />

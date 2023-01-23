@@ -31,7 +31,7 @@ function NewMovie({ onAddItem }) {
             imageUrl: imageUrl
         };
 
-        fetch("http://localhost:9292/movies", {
+        fetch("http://localhost:9292/directors/${id}/movies", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
