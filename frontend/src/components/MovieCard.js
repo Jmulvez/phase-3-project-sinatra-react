@@ -4,6 +4,7 @@ import EditMovie from "./EditMovie";
 function MovieCard({ id, name, runtime, genre, imageUrl, onMovieDelete, onMovieEdit }) {
     const [watched, setWatched] = useState(false);
     const [isEditing, setEditing] = useState(false);
+
     const pictureStyle = {
         width:"300px",
         height:"400px"

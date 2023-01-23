@@ -7,30 +7,29 @@ class ApplicationController < Sinatra::Base
     end
     
     post '/movies' do
-        movies = Movie.create(
+        movie = Movie.create(
             name: params[:name],
             runtime: params[:runtime],
             genre: params[:genre],
             imageUrl: params[:imageUrl]
         )
-        movies.to_json
+        movie.to_json
     end
 
     patch '/movies/:id' do 
-        movies = Movie.find(params[:id])
-        movies.update(
+        movie = Movie.find(params[:id])
+        movie.update(
             name: params[:name],
             runtime: params[:runtime],
             genre: params[:genre],
             imageUrl: params[:imageUrl]
         )
-        movies.to_json
+        movie.to_json
     end
 
     delete '/movies/:id' do 
-        movies = Movie.find(params[:id])
-        movies.destroy
-        movies.to_json
+        movie = Movie.find(params[:id])
+        movie.destroy
     end
 
     get '/directors' do
@@ -51,28 +50,27 @@ class ApplicationController < Sinatra::Base
     end
 
     post '/directors/:id/movies' do
-    movie = Movie.create(
-            name: params[:name],
-            runtime: params[:runtime],
-            genre: params[:genre],
-            imageUrl: params[:imageUrl],
-            director_id: params[:id]
-    )
-    movie.to_json
+        movie = Movie.create(
+                name: params[:name],
+                runtime: params[:runtime],
+                genre: params[:genre],
+                imageUrl: params[:imageUrl],
+                director_id: params[:id]
+        )
+        movie.to_json
     end
 
     patch '/directors/:id' do
-        directors = Director.find(params[:id])
-        directors.update(
+        director = Director.find(params[:id])
+        director.update(
             name: params[:name]
         )
-        directors.to_json
+        director.to_json
     end
 
     delete '/directors/:id' do
-        directors = Director.find(params[:id])
-        directors.destroy
-        directors.to_json
+        director = Director.find(params[:id])
+        director.destroy
     end
 
 end

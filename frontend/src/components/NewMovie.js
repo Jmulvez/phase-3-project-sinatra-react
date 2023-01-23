@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function NewMovie({ onAddItem }) {
+function NewMovie({ onAddItem, id }) {
     const [name, setName] = useState("");
     const [runtime, setRuntime] = useState("");
     const [genre, setGenre] = useState("");
@@ -31,7 +31,7 @@ function NewMovie({ onAddItem }) {
             imageUrl: imageUrl
         };
 
-        fetch("http://localhost:9292/directors/${id}/movies", {
+        fetch(`http://localhost:9292/directors/${id}/movies`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -48,7 +48,7 @@ function NewMovie({ onAddItem }) {
 
     return (
         <form className="NewMovie" onSubmit={handleSubmit}>
-            Add Movie to Watchlist:
+            Add Movie:
             <ul>
             <input 
             label="name"

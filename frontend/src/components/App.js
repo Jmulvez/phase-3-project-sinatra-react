@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./Login";
-import Movie from "./Movie";
+import Movie from "./Movies";
 import NewMovie from "./NewMovie";
-import DirectorPage from "./DirectorPage";
+import Directors from "./Directors";
+import NewDirector from "./NewDirector";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -36,9 +37,18 @@ function handleNewMovie(newMovie) {
   setMovies([...movies, newMovie])
 }
 
+function handleNewDirector(newDirector) {
+  setMovies([...directors, newDirector])
+}
+
 function handleDeleteMovie(id) {
   const updatedMovies = movies.filter((movie) => movie.id !== id);
   setMovies(updatedMovies);
+}
+
+function handleDeleteDirector(id) {
+  const updatedDirectors = directors.filter((director) => director.id !== id);
+  setDirectors(updatedDirectors);
 }
 
 function handleEditedMovies(updatedMovieObj) {
@@ -51,6 +61,7 @@ function handleEditedMovies(updatedMovieObj) {
   });
   setMovies(updatedMovies);
 }
+
     return (
       <div>
         <Router>
@@ -64,12 +75,12 @@ function handleEditedMovies(updatedMovieObj) {
             </button>
             <button>
               <li style={buttonStyle}>
-                <Link to="/Movies" style={textStyle}>Watchlist</Link>
+                <Link to="/movies" style={textStyle}>All Movies</Link>
               </li>
             </button>
             <button>
               <li style={buttonStyle}>
-                <Link to="/DirectorPage" style={textStyle}>Directors</Link>
+                <Link to="/directors" style={textStyle}>Directors</Link>
               </li>
             </button>
           </ul>
@@ -78,14 +89,17 @@ function handleEditedMovies(updatedMovieObj) {
           <Route exact path="/">
             <Login />
           </Route>
-          <Route exact path="/DirectorPage">
-            <DirectorPage directors={directors} 
-                          onMovieDelete={handleDeleteMovie}
-                          onMovieEdit={handleEditedMovies}
-                          onAddItem={handleNewMovie}
-                          />
+          <Route exact path="/directors">
+            <NewDirector onAddItem={handleNewDirector} />
+            <Directors 
+              directors={directors} 
+              id={directors.id}
+              onDirectorDelete={handleDeleteDirector}
+              onMovieDelete={handleDeleteMovie}
+              onMovieEdit={handleEditedMovies}
+              />
           </Route>
-          <Route path="/Movies">
+          <Route path="/movies">
             <NewMovie onAddItem={handleNewMovie} />
             <Movie 
               movies={movies}
