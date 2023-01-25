@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Login from "./Login";
-import Movie from "./Movies";
 import NewMovie from "./NewMovie";
 import Directors from "./Directors";
 import NewDirector from "./NewDirector";
@@ -39,7 +38,7 @@ function handleNewMovie(newMovie) {
 }
 
 function handleNewDirector(newDirector) {
-  setMovies([...directors, newDirector])
+  setDirectors([...directors, newDirector].order)
 }
 
 function handleDeleteMovie(id) {
@@ -62,7 +61,6 @@ function handleEditedMovies(updatedMovieObj) {
   });
   setMovies(updatedMovies);
 }
-
     return (
       <div>
         <Router>
@@ -90,12 +88,15 @@ function handleEditedMovies(updatedMovieObj) {
             <Directors 
               directors={directors} 
               onDirectorDelete={handleDeleteDirector}
+              />
+          </Route>
+          <Route exact path="/directors/:id">
+            <NewMovie onAddItem={handleNewMovie} />
+            <DirectorPage 
+              directors={directors}
               onMovieDelete={handleDeleteMovie}
               onMovieEdit={handleEditedMovies}
               />
-          </Route>
-          <Route path="/directors/:id">
-             <DirectorPage directors={directors}/>
           </Route>
         </Switch>
       </div>

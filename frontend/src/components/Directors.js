@@ -1,13 +1,14 @@
 import React from 'react';
 import { Link } from "react-router-dom";
-import DirectorPage from './DirectorPage';
 
-function Directors({ directors, onMovieDelete, onMovieEdit }) {
+function Directors({ directors }) {
 
     const getDirectors = directors.map((director) => {
         return <div key={director.id}>
                     <h2>{director.name}</h2>
-                    <Link to={`/directors/${director.id}`}>Director Page</Link>
+                    <Link to={`/directors/${director.id}`}>
+                        <p>Movies by {director.name}</p>
+                    </Link>
                </div>
     })
     return (
