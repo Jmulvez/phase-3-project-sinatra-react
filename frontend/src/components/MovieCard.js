@@ -51,7 +51,7 @@ function MovieCard({ id, name, runtime, genre, imageUrl, onMovieDelete, onMovieE
                 <span role="img" aria-label="delete">
                     🗑
                 </span>
-          </button>
+            </button>
         </div>
         )}
         </li>

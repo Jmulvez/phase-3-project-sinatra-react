@@ -5,6 +5,7 @@ import Movie from "./Movies";
 import NewMovie from "./NewMovie";
 import Directors from "./Directors";
 import NewDirector from "./NewDirector";
+import DirectorPage from "./DirectorPage";
 
 function App() {
   const [movies, setMovies] = useState([]);
@@ -75,11 +76,6 @@ function handleEditedMovies(updatedMovieObj) {
             </button>
             <button>
               <li style={buttonStyle}>
-                <Link to="/movies" style={textStyle}>All Movies</Link>
-              </li>
-            </button>
-            <button>
-              <li style={buttonStyle}>
                 <Link to="/directors" style={textStyle}>Directors</Link>
               </li>
             </button>
@@ -93,19 +89,13 @@ function handleEditedMovies(updatedMovieObj) {
             <NewDirector onAddItem={handleNewDirector} />
             <Directors 
               directors={directors} 
-              id={directors.id}
               onDirectorDelete={handleDeleteDirector}
               onMovieDelete={handleDeleteMovie}
               onMovieEdit={handleEditedMovies}
               />
           </Route>
-          <Route path="/movies">
-            <NewMovie onAddItem={handleNewMovie} />
-            <Movie 
-              movies={movies}
-              onMovieDelete={handleDeleteMovie}
-              onMovieEdit={handleEditedMovies}
-              />
+          <Route path="/directors/:id">
+             <DirectorPage directors={directors}/>
           </Route>
         </Switch>
       </div>

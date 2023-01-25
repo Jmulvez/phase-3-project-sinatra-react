@@ -1,17 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Link } from "react-router-dom";
 import DirectorPage from './DirectorPage';
 
-function Directors({ directors, onDirectorDelete, onMovieEdit, onMovieDelete, onAddItem }) {
-    const [director, setDirector] = useState([]);
+function Directors({ directors, onMovieDelete, onMovieEdit }) {
 
     const getDirectors = directors.map((director) => {
         return <div key={director.id}>
                     <h2>{director.name}</h2>
-                    <Link to={`/directors/${director.id}`} 
-                    directors={directors}
-                    onDirectorDelete={onDirectorDelete}
-                    >Director Page</Link>
+                    <Link to={`/directors/${director.id}`}>Director Page</Link>
                </div>
     })
     return (
