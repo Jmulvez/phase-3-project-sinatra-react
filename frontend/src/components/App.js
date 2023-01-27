@@ -38,7 +38,7 @@ function handleNewMovie(newMovie) {
 }
 
 function handleNewDirector(newDirector) {
-  setDirectors([...directors, newDirector].order)
+  setDirectors([...directors, newDirector])
 }
 
 function handleDeleteMovie(id) {
@@ -61,6 +61,7 @@ function handleEditedMovies(updatedMovieObj) {
   });
   setMovies(updatedMovies);
 }
+
     return (
       <div>
         <Router>
@@ -94,6 +95,7 @@ function handleEditedMovies(updatedMovieObj) {
             <NewMovie onAddItem={handleNewMovie} />
             <DirectorPage 
               directors={directors}
+              movies={movies}
               onMovieDelete={handleDeleteMovie}
               onMovieEdit={handleEditedMovies}
               />

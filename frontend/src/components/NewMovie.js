@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 
-function NewMovie({ onAddItem, id }) {
+function NewMovie({ onAddItem }) {
     const [name, setName] = useState("");
     const [runtime, setRuntime] = useState("");
     const [genre, setGenre] = useState("");
     const [imageUrl, setImage] = useState("");
+    const params = useParams();
     
     function handleNewName(e) {
         setName(e.target.value);
@@ -28,10 +30,11 @@ function NewMovie({ onAddItem, id }) {
             name: name,
             runtime: runtime,
             genre: genre,
-            imageUrl: imageUrl
+            imageUrl: imageUrl,
+            director_id: params.id
         };
 
-        fetch(`http://localhost:9292/directors/${id}/movies`, {
+        fetch(`http://localhost:9292/movies`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

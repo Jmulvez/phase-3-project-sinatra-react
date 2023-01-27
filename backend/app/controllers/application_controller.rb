@@ -11,7 +11,8 @@ class ApplicationController < Sinatra::Base
             name: params[:name],
             runtime: params[:runtime],
             genre: params[:genre],
-            imageUrl: params[:imageUrl]
+            imageUrl: params[:imageUrl],
+            director_id: params[:director_id]
         )
         movie.to_json
     end
