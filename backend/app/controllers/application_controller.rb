@@ -61,14 +61,6 @@ class ApplicationController < Sinatra::Base
         movie.to_json
     end
 
-    patch '/directors/:id' do
-        director = Director.find(params[:id])
-        director.update(
-            name: params[:name]
-        )
-        director.to_json
-    end
-
     delete '/directors/:id' do
         director = Director.find(params[:id])
         director.destroy
