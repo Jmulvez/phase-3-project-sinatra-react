@@ -34,6 +34,10 @@ function App() {
   }, []);
 
 function handleNewMovie(newMovie) {
+  //find director involved
+  //const updatedMovies = add this movie to that directors array
+  //const updatedDirector = spread operater on director object 
+  //const updatesDirectors = directors.map([])
   setMovies([...movies, newMovie])
 }
 
@@ -44,11 +48,6 @@ function handleNewDirector(newDirector) {
 function handleDeleteMovie(id) {
   const updatedMovies = movies.filter((movie) => movie.id !== id);
   setMovies(updatedMovies);
-}
-
-function handleDeleteDirector(id) {
-  const updatedDirectors = directors.filter((director) => director.id !== id);
-  setDirectors(updatedDirectors);
 }
 
 function handleEditedMovies(updatedMovieObj) {
@@ -88,14 +87,12 @@ function handleEditedMovies(updatedMovieObj) {
             <NewDirector onAddItem={handleNewDirector} />
             <Directors 
               directors={directors} 
-              onDirectorDelete={handleDeleteDirector}
               />
           </Route>
           <Route exact path="/directors/:id">
             <NewMovie onAddItem={handleNewMovie} />
             <DirectorPage 
               directors={directors}
-              movies={movies}
               onMovieDelete={handleDeleteMovie}
               onMovieEdit={handleEditedMovies}
               />
