@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 
-function NewMovie({ onAddItem }) {
+function NewMovie({ onAddMovie }) {
     const [name, setName] = useState("");
     const [runtime, setRuntime] = useState("");
     const [genre, setGenre] = useState("");
@@ -42,7 +42,7 @@ function NewMovie({ onAddItem }) {
             body: JSON.stringify(movieData)
         })
         .then(res => res.json())
-        .then(newMovie => onAddItem(newMovie))
+        .then(newMovie => onAddMovie(newMovie))
         setName("")
         setRuntime("")
         setGenre("")

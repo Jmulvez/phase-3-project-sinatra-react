@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function NewDirector({ onAddItem }) {
+function NewDirector({ onAddDirector }) {
     const [name, setName] = useState("");
     
     function handleNewName(e) {
@@ -21,7 +21,7 @@ function NewDirector({ onAddItem }) {
             body: JSON.stringify(directorData)
         })
         .then(res => res.json())
-        .then(newDirector => onAddItem(newDirector))
+        .then(newDirector => onAddDirector(newDirector))
         setName("")
     }
 

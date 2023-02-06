@@ -7,7 +7,6 @@ import NewDirector from "./NewDirector";
 import DirectorPage from "./DirectorPage";
 
 function App() {
-  const [movies, setMovies] = useState([]);
   const [directors, setDirectors] = useState([]);
 
   const buttonStyle = {
@@ -22,23 +21,17 @@ function App() {
   };
 
   useEffect(() => {
-    fetch("http://localhost:9292/movies")
-    .then((res) => res.json())
-    .then(data => setMovies(data))
-  }, []);
-
-  useEffect(() => {
     fetch("http://localhost:9292/directors")
     .then((res) => res.json())
     .then(data => setDirectors(data))
   }, []);
 
 function handleNewMovie(newMovie) {
-  //find director involved
-  //const updatedMovies = add this movie to that directors array
-  //const updatedDirector = spread operater on director object 
-  //const updatesDirectors = directors.map([])
-  setMovies([...movies, newMovie])
+  const director = directors.find((director) => director.id === newMovie.director_id)
+  const updatedMovies = [...director.movies, newMovie]
+  const updatedDirector = {...director, movies: updatedMovies}
+  const updatedDirectors = [...directors, updatedDirector]
+  setDirectors(updatedDirectors)
 }
 
 function handleNewDirector(newDirector) {
@@ -46,19 +39,19 @@ function handleNewDirector(newDirector) {
 }
 
 function handleDeleteMovie(id) {
-  const updatedMovies = movies.filter((movie) => movie.id !== id);
-  setMovies(updatedMovies);
+  const updatedMovies = directors.movies.filter((movie) => movie.id !== id);
+  setDirectors(updatedMovies);
 }
 
 function handleEditedMovies(updatedMovieObj) {
-  const updatedMovies = movies.map((movie) => {
+  const updatedMovies = directors.movies.map((movie) => {
     if (movie.id === updatedMovieObj.id) {
       return updatedMovieObj;
     } else {
       return movie;
     }
   });
-  setMovies(updatedMovies);
+  setDirectors(updatedMovies);
 }
 
     return (
@@ -84,13 +77,15 @@ function handleEditedMovies(updatedMovieObj) {
             <Login />
           </Route>
           <Route exact path="/directors">
-            <NewDirector onAddItem={handleNewDirector} />
+            <NewDirector onAddDirector={handleNewDirector} />
             <Directors 
               directors={directors} 
               />
           </Route>
           <Route exact path="/directors/:id">
-            <NewMovie onAddItem={handleNewMovie} />
+            <NewMovie 
+              onAddMovie={handleNewMovie} 
+            />
             <DirectorPage 
               directors={directors}
               onMovieDelete={handleDeleteMovie}
