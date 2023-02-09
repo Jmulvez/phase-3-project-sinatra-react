@@ -9,7 +9,8 @@ function MovieCard({ id, name, runtime, genre, imageUrl, onMovieDelete, onMovieE
         height:"400px"
     };
 
-    function handleDeleteClick() {
+    function handleDeleteClick(e) {
+        e.preventDefault();
         fetch(`http://localhost:9292/movies/${id}`, {
             method: "DELETE",
         });
