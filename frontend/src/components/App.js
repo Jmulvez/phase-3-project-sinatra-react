@@ -30,7 +30,12 @@ function handleNewMovie(newMovie) {
   const director = directors.find((director) => director.id === newMovie.director_id)
   const updatedMovies = [...director.movies, newMovie]
   const updatedDirector = {...director, movies: updatedMovies}
-  const updatedDirectors = [...directors, updatedDirector]
+  const updatedDirectors = directors.map((obj) => {
+    if (obj.id === director.id) {
+      return updatedDirector
+    }
+  })
+  console.log(updatedDirectors)
   setDirectors(updatedDirectors)
 }
 
@@ -39,19 +44,25 @@ function handleNewDirector(newDirector) {
 }
 
 function handleDeleteMovie(id) {
-  const updatedMovies = directors.movies.filter((movie) => movie.id !== id);
-  setDirectors(updatedMovies);
+  const director = directors.find((director) => director.id === id)
+  const updatedMovies = director.movies.filter((movie) => movie.id !== id);
+  const updatedDirector = {...director, movies: updatedMovies}
+  const updatedDirectors = [...directors, updatedDirector]
+  setDirectors(updatedDirectors);
 }
 
-function handleEditedMovies(updatedMovieObj) {
-  const updatedMovies = directors.movies.map((movie) => {
-    if (movie.id === updatedMovieObj.id) {
-      return updatedMovieObj;
+function handleEditedMovies(updatedMovie) {
+  const director = directors.find((director) => director.id === updatedMovie.director_id)
+  const updatedMovies = director.movies.map((movie) => {
+    if (movie.id === updatedMovie.id) {
+      return updatedMovie;
     } else {
       return movie;
     }
   });
-  setDirectors(updatedMovies);
+  const updatedDirector = {...director, movies: updatedMovies}
+  const updatedDirectors = [...directors, updatedDirector]
+  setDirectors(updatedDirectors);
 }
 
     return (
