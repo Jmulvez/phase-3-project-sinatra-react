@@ -10,7 +10,8 @@ function NewDirector({ onAddDirector }) {
     function handleSubmit(e) {
         e.preventDefault();
         const directorData = {
-            name: name
+            name: name,
+            movies: []
         };
 
         fetch(`http://localhost:9292/directors`, {
@@ -26,7 +27,7 @@ function NewDirector({ onAddDirector }) {
     }
 
     return (
-        <form className="NewMovie" onSubmit={handleSubmit}>
+        <form className="NewDirector" onSubmit={handleSubmit}>
             Add Director:
             <ul>
                 <input 
