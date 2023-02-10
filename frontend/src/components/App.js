@@ -42,7 +42,7 @@ function handleNewMovie(newMovie) {
 }
 
 function handleNewDirector(newDirector) {
-  setDirectors([...directors, newDirector])
+  setDirectors([...directors, {...newDirector, movies: []}])
 }
 
 function handleDeletedMovie(deletedMovie) {
