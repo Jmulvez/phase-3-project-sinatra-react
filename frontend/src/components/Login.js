@@ -17,7 +17,7 @@ function Login() {
                 placeholder="Password"
                 />
             </form>
-            <button onClick={() => {history.push('/movies')}}>Login</button>
+            <button onClick={() => {history.push('/directors')}}>Login</button>
             <div>
                 <img src="https://images.all-free-download.com/images/graphiclarge/movie_logo_design_text_reel_filmstrip_icons_decoration_6829232.jpg" alt=""/>
             </div>
