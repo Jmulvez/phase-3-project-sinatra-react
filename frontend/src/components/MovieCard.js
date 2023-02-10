@@ -9,12 +9,17 @@ function MovieCard({ id, name, runtime, genre, imageUrl, onMovieDelete, onMovieE
         height:"400px"
     };
 
+    let deletedMovie = {id, name}
+
     function handleDeleteClick(e) {
-        e.preventDefault();
         fetch(`http://localhost:9292/movies/${id}`, {
             method: "DELETE",
-        });
-        onMovieDelete(id);
+            headers: {
+                "Content-Type": "application/json",
+              }
+        })
+        .then((res) => res.json())
+        .then(() => onMovieDelete(deletedMovie))
     }
 
     function handleUpdateMovie(updatedMovie) {

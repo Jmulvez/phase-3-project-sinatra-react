@@ -45,9 +45,10 @@ function handleNewDirector(newDirector) {
   setDirectors([...directors, newDirector])
 }
 
-function handleDeleteMovie(id) {
-  const director = directors.find((director) => director.id === id.director_id)
-  const updatedMovies = director.movies.filter((movie) => movie.id == id.id);
+function handleDeletedMovie(deletedMovie) {
+  console.log(deletedMovie)
+  const director = directors.find((director) => director.id === deletedMovie.director_id)
+  const updatedMovies = director.movies.filter((m) => m.id !== deletedMovie.id);
   const updatedDirector = {...director, movies: updatedMovies}
   const updatedDirectors = directors.map((obj) => {
     if (obj.id === director.id) {
@@ -115,7 +116,7 @@ function handleEditedMovies(updatedMovie) {
             />
             <DirectorPage 
               directors={directors}
-              onMovieDelete={handleDeleteMovie}
+              onMovieDelete={handleDeletedMovie}
               onMovieEdit={handleEditedMovies}
               />
           </Route>
