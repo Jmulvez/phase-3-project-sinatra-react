@@ -46,9 +46,8 @@ function handleNewDirector(newDirector) {
 }
 
 function handleDeletedMovie(deletedMovie) {
-  console.log(deletedMovie)
-  const director = directors.find((director) => director.id === deletedMovie.director_id)
-  const updatedMovies = director.movies.filter((m) => m.id !== deletedMovie.id);
+  const director = directors.find((director) => director.id === deletedMovie.movie.director_id)
+  const updatedMovies = director.movies.filter((m) => m.id !== deletedMovie.movie.id);
   const updatedDirector = {...director, movies: updatedMovies}
   const updatedDirectors = directors.map((obj) => {
     if (obj.id === director.id) {

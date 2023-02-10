@@ -33,6 +33,7 @@ function DirectorPage({ directors, onMovieDelete, onMovieEdit }) {
                                imageUrl={movie.imageUrl}
                                onMovieDelete={onMovieDelete}
                                onMovieEdit={onMovieEdit}
+                               movie={movie}
                     />
                 </div>
     })

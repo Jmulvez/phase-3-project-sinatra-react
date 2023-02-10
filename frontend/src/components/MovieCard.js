@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import EditMovie from "./EditMovie";
 
-function MovieCard({ id, name, runtime, genre, imageUrl, onMovieDelete, onMovieEdit }) {
+function MovieCard({ id, name, runtime, genre, imageUrl, onMovieDelete, onMovieEdit, movie }) {
     const [isEditing, setEditing] = useState(false);
 
     const pictureStyle = {
@@ -9,17 +9,13 @@ function MovieCard({ id, name, runtime, genre, imageUrl, onMovieDelete, onMovieE
         height:"400px"
     };
 
-    let deletedMovie = {id, name}
+    let deletedMovie = {movie}
 
     function handleDeleteClick(e) {
         fetch(`http://localhost:9292/movies/${id}`, {
-            method: "DELETE",
-            headers: {
-                "Content-Type": "application/json",
-              }
+            method: "DELETE"       
         })
-        .then((res) => res.json())
-        .then(() => onMovieDelete(deletedMovie))
+        .then (onMovieDelete(deletedMovie))
     }
 
     function handleUpdateMovie(updatedMovie) {
