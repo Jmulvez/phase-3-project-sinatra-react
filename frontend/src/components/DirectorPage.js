@@ -18,11 +18,11 @@ function DirectorPage({ directors, onMovieDelete, onMovieEdit }) {
     }
 
     useEffect(() => {
-        const director = directors.find((director) => director.id === parseInt(params.id))
-        if (director) {
-            setSelectedDirector(director)
+        const selectedDirector = directors.find((director) => director.id === parseInt(params.id))
+        if (selectedDirector) {
+            setSelectedDirector(selectedDirector)
         }
-    }, [directors]);
+    }, [directors, params.id]);
 
     const getMovies = selectedDirector.movies.map((movie) => {
         return <div className="card" style={movieCardStyle}>
